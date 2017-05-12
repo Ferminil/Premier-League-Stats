@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="../Style/main.css"><!-- Links to my CSS -->
 <html>
 <head>
-<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="../Style/main.css">
 
 <h1> Premier League </h1>
     <a href="Premier league.html"  <button class="button button2"> Home </button></a>
@@ -12,46 +12,76 @@
 	<a href="signup.html" <button class="button button2">Sign up</button></a><!-- Opens a new tab by clicking the button, bring you to a sign up page -->
 	<a href="Everything FIFA.html"  <button class="button button2"> Everything FIFA!</button></a><!-- Opens a new tab by clicking the button, bring you to Everything FIFA -->
 
-
-<script src="js/login.js"></script>
 </head>
-<body>
-<div class="container">
-<div class="main">
-<form id="form_id" method="post" name="myform">
+	<body>
+		<div class="container">
+		<div class="main">
+	<form id="form_id" method="post" name="myform">
 <label>User Name :</label>
-<input type="text" name="username" id="username"/>
+	<input type="text" name="username" id="username">
 <label>Password :</label>
-<input type="password" name="password" id="password"/>
-<input type="button" value="Login" id="submit" onclick="validate()"/>
-</form>
-<span><b class="note"> <br/><b class="valid">User Name : ferminil <br/>Password : skrt</b></span>
+<input type="password" name="password" id="password">
+<input type="button" value="Login" id="submit" onclick="validate()">
+	</form>
+<span><b class="note"> <br/><b class="valid">User Name : ferminil <br/>Password : try123</b></span>
 </div>
 </div>
 
 <script>
-var attempt = 3; // Variable to count number of attempts.
-// Below function Executes on click of login button.
-function validate(){
-var username = document.getElementById("username").value;
-var password = document.getElementById("password").value;
-if ( username == "ferminil" && password == "skrt"){
-alert ("Login successfully");
-window.location = "Premier league.html"; // Redirecting to other page.
-return false;
+
+		
+function validate() {
+    var un = document.getElementById("username").value;
+    var pw = document.getElementById("password").value;
+    var valid = -1;
+
+    var unArray = ["flahertym", "argentod", "ferminil"]; //these are the usernames
+    var pwArray = ["matt123", "dom123", "fer123"]; //while these are the passwords which correspond with the username above it.
+    var fnArray = ["Matthew Flaherty", "Dominic Argento", "Luca Fermini"]; //These are the names
+
+    for (var i=0; i <unArray.length; i++) { //this checks the variable.
+        if ((un == unArray[i]) && (pw == pwArray[i])) { //when you submit your username and password it scans the arrays, and when it finds it goes to the next line
+            valid = i;
+            break;
+        }
+    }
+
+    if (valid != -1) { //if the username is valid then
+        alert ("Login was successful"); //say login successful
+		console.log("Hello"); //and welcome the user
+		window.location = "Premier league.html"; //it then brings you to the main html page
+    }
+    else {
+        alert("Invalid Username and/or Password! Please try again. You will not be able to submit this form without a successful login")
+        document.getElementById("pword").value = ""; //if the password or username is wrong it will show you a message and tell you that it was unsuccessfull.
+        document.getElementById("usern").value = "";
+        document.getElementById("usern").focus();
+    }
 }
-else{
-attempt --;// Decreases by one.
-alert("You have left "+attempt+" attempt;");
-// Disables after 3 attempts.
-if( attempt == 0){
-document.getElementById("username").disabled = true;
-document.getElementById("password").disabled = true;
-document.getElementById("submit").disabled = true;
-return false;
-}
-}
-}
+			
+	
+	
+	
 </script>
 </body>
 </html>
+
+
+
+<!--if ( username == "ferminil" && password === "try123"){
+	alert ("Login successfully");
+	window.location = "Premier league.html"; // Redirects to home page
+	return false;
+	}
+	else{
+		attempt --;// Decreases by one.
+		alert("You have left "+attempt+" attempt;");
+			// Disables access after 3 attempts
+	if( attempt === 0){
+		document.getElementById("username").disabled = true;
+		document.getElementById("password").disabled = true;
+		document.getElementById("submit").disabled = true;
+return false;
+}
+}
+}-->
